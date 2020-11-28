@@ -19,3 +19,13 @@ document.body.appendChild(component());
  * and will generate dist/main.js as the output. The npx command, which ships with Node 8.2/npm 5.2.0 or higher,
  * runs the webpack binary (./node_modules/.bin/webpack) of the webpack package we installed in the beginning
  * ***/
+
+/***
+ * Now the npm run build command can be used in place of the npx command we used earlier. Note that within scripts we can reference locally
+ * installed npm packages by name the same way we did with npx.
+ * This convention is the standard in most npm-based projects because it allows all contributors to use the same set of common scripts.
+ * ***/
+
+/*
+ Custom parameters can be passed to webpack by adding two dashes between the npm run build command and your parameters, e.g. npm run build -- --color.
+ */
