@@ -1,35 +1,12 @@
 import _ from "lodash";
-import "./style.css";
-import mapIcon from  "./images/mapbox-icon.png";
-import Data from "./data/data.xml";
-import Notes from "./data/data.csv";
-import toml from "./data/data.toml";
-import yaml from "./data/data.yaml";
-import json from "./data/data.json5";
-
-console.log(toml.title);
-console.log(toml.owner.name);
-
-console.log(yaml.title);
-console.log(yaml.owner.name);
-
-console.log(json.title);
-console.log(json.owner.name);
+// import "./style.css";
 
 function component() {
   var element = document.createElement("div");
   // Lodash, currently included via a script, is required for this line to work
   // Lodash, now imported by this script
   element.innerHTML = _.join(["Hello", "webpack"], " ");
-  element.classList.add('hello');
-  //add image to ur div
-  var ourIcon = new Image();
-  ourIcon.src = mapIcon;
-
-  element.appendChild(ourIcon);
-
-  console.log(Data);
-  console.log(Notes);
+  
 
   return element;
 }
