@@ -1,6 +1,8 @@
 import _ from "lodash";
 import "./style.css";
 import mapIcon from  "./images/mapbox-icon.png";
+import Data from "./data/data.xml";
+import Notes from "./data/data.csv";
 
 function component() {
   var element = document.createElement("div");
@@ -13,6 +15,9 @@ function component() {
   ourIcon.src = mapIcon;
 
   element.appendChild(ourIcon);
+
+  console.log(Data);
+  console.log(Notes);
 
   return element;
 }
@@ -38,3 +43,8 @@ document.body.appendChild(component());
 /*
  Custom parameters can be passed to webpack by adding two dashes between the npm run build command and your parameters, e.g. npm run build -- --color.
  */
+
+/*
+This can be especially helpful when implementing some sort of data visualization using a tool like d3. Instead of making an ajax request and parsing the data at
+runtime you can load it into your module during the build process so that the parsed data is ready to go as soon as the module hits the browser.
+*/
