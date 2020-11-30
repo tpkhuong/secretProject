@@ -1,15 +1,26 @@
 var path = require("path");
+var HtmlWebpackPlugin = require("html-webpack-plugin");
+var {CleanWebpackPlugin} = require("clean-webpack-plugin");
 // var toml = require("toml");
 // var yaml = require("yamljs");
 // var json5 = require("json5");
 
 
 module.exports = {
-  entry: "./src/index.js",
+  entry: {
+    index: "./src/index.js",
+    print: "./src/print.js",
+  },
   output: {
-    filename: "bundle.js",
+    filename: "[name].bundle.js",
     path: path.resolve(__dirname, "dist"),
   },
+  plugins: [
+    new CleanWebpackPlugin(),
+    new HtmlWebpackPlugin({
+      title: "Output Management",
+    }),
+  ]
   // module: {
   //   rules: [
   //     /*css and style loader*/
@@ -90,4 +101,31 @@ external dependencies and your configuration has the same loaders defined, you s
 
 However, let's say you're locked into your old ways or you have some assets that are shared between multiple components
 (views, templates, modules, etc.). It's still possible to store these assets in a base directory and even use aliasing to make them easier to import
+*/
+
+/*
+We can see that webpack generates our print.bundle.js and index.bundle.js files, which we also specified in our index.html file.
+if you open index.html in your browser, you can see what happens when you click the button.
+
+But what would happen if we changed the name of one of our entry points, or even added a new one? The generated bundles would be renamed on a build,
+but our index.html file would still reference the old names. Let's fix that with the HtmlWebpackPlugin.
+
+Setting up HtmlWebpackPlugin
+*/
+
+/*
+the HtmlWebpackPlugin by default will generate its own index.html file, even though we already have one in the dist/ folder.
+This means that it will replace our index.html file with a newly generated one. Let's see what happens when we do an npm run build:
+
+HtmlWebpackPlugin has created an entirely new file for you and that all the bundles are automatically added.
+*/
+
+/*
+clean the /dist folder before each build, so that only used files will be generated. Let's take care of that.
+Webpack will generate the files and put them in the /dist folder for you, but it doesn't keep track of which files are actually in use by your project.
+*/
+
+/*
+plugins seem to "know" what files are being generated. The answer is in the manifest that webpack keeps to track how all the modules map to the output bundles.
+If you're interested in managing webpack's output in other ways, the manifest would be a good place to start.
 */
