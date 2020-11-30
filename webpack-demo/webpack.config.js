@@ -8,10 +8,21 @@ module.exports = {
   },
   module: {
     rules: [
+      /*css and style loader*/
       {
         test: /\.css$/i,
         /* goes from right to left */
         use: ['style-loader', 'css-loader'],
+      },
+      /*image loader*/
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      /*fonts loader*/
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource'
       }
     ]
   }

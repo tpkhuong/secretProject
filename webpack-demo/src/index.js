@@ -1,5 +1,6 @@
 import _ from "lodash";
 import "./style.css";
+import mapIcon from  "./images/mapbox-icon.png";
 
 function component() {
   var element = document.createElement("div");
@@ -7,6 +8,11 @@ function component() {
   // Lodash, now imported by this script
   element.innerHTML = _.join(["Hello", "webpack"], " ");
   element.classList.add('hello');
+  //add image to ur div
+  var ourIcon = new Image();
+  ourIcon.src = mapIcon;
+
+  element.appendChild(ourIcon);
 
   return element;
 }
