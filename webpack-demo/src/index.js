@@ -3,6 +3,18 @@ import "./style.css";
 import mapIcon from  "./images/mapbox-icon.png";
 import Data from "./data/data.xml";
 import Notes from "./data/data.csv";
+import toml from "./data/data.toml";
+import yaml from "./data/data.yaml";
+import json from "./data/data.json5";
+
+console.log(toml.title);
+console.log(toml.owner.name);
+
+console.log(yaml.title);
+console.log(yaml.owner.name);
+
+console.log(json.title);
+console.log(json.owner.name);
 
 function component() {
   var element = document.createElement("div");
